@@ -6,6 +6,7 @@ import Hero from './components/hero';
 import { useAllCars } from '@/hooks/dataRequest/all-cars';
 import Button from './components/ui/button';
 import Link from 'next/link';
+import Header from './components/header';
 
 export default function Home() {
   const { data, isLoading } = useAllCars();
@@ -14,6 +15,8 @@ export default function Home() {
   const recommendedCars = data.filter((car) => car.recommended);
 
   return (
+    <>
+    <Header />
     <main className={`md:p-4`}>
       <Hero />
       <CarRow rowTitle="Popular Car" data={popularCars} isLoading={isLoading} />
@@ -33,5 +36,6 @@ export default function Home() {
         <h2 className="text-secondary-300 text-lg font-semibold">120 Car</h2>
       </div>
     </main>
+    </>
   );
 }
